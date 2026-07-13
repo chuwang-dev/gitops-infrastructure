@@ -1,12 +1,5 @@
 services:
   - type: web
     name: gitops-sample-webserver
-    runtime: image
-    image:
-      url: docker.io/library/nginx:alpine
+    runtime: static
     plan: free
-    envVars:
-      - key: PORT
-        value: "10000"
-      - key: NGINX_PORT
-        value: "10000"
