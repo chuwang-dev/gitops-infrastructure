@@ -2,9 +2,7 @@ services:
   - type: web
     name: gitops-sample-webserver
     runtime: image
-    image:
-      registry: docker
-      image: nginx:alpine
+    imageURL: docker.io/library/nginx:alpine
     plan: free
     envVars:
       - key: PORT
