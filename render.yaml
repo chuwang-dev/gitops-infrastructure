@@ -2,6 +2,7 @@ services:
   - type: web
     name: gitops-sample-webserver
     runtime: static
+    publishDir: .
     routes:
       - type: rewrite
         source: /*
