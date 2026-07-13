@@ -1,5 +1,4 @@
 services:
-  - type: web
+  - type: static
     name: gitops-sample-webserver
     runtime: static
-    plan: free
