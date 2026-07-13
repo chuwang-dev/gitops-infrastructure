@@ -2,7 +2,7 @@ services:
   - type: web
     name: gitops-sample-webserver
     runtime: image
-    imageRepository: nginx:alpine
+    image: nginx:alpine
     plan: free
     envVars:
       - key: PORT
