@@ -1,18 +1,116 @@
-S<p>Release 1: deployed from Git commit <strong>YOUR-NAME</strong>.</p>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>GitOps Production Server</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 100px; background: #f4f7f6; }
-        .card { background: white; padding: 40px; display: inline-block; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #817df1a2; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitOps Control Center</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <div class="card">
-        <h1>🚀 GitOps Pipeline: Online (Preview Environment Test)</h1>
-        <p>Managed via Infrastructure as Code. Automated updates are fully active.</p>
-    </div>
+<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <!-- SVG Green Cross/Tech Logo Placeholder (Perfect for a clean tech/pharmaceutical vibe) -->
+                <div class="bg-brand-500/10 p-2 rounded-lg border border-brand-500/30">
+                    <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-white block">SKT Healthcare</span>
+                    <span class="text-xs text-slate-400 tracking-wider uppercase font-semibold">Pharmaceuticals</span>
+                </div>
+            </div>
+            
+            <!-- Badge Status -->
+            <div>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-500 border border-brand-500/20 animate-pulse">
+                    ● Pipeline Online
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="flex-grow flex items-center justify-center px-6 py-12">
+        <div class="max-w-3xl text-center space-y-8">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Modern Healthcare Delivery, <br>
+                <span class="bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">Streamlined by GitOps</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Welcome to your deployment portal. This application is automatically compiled, tested, and distributed globally using modern infrastructure-as-code pipelines.
+            </p>
+
+            <!-- Dashboard Mockup Card -->
+            <div class="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 md:p-8 shadow-2xl text-left max-w-xl mx-auto backdrop-blur-sm">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <span>⚡</span> System Status Indicators
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
+                        <span class="text-slate-400 text-sm">Deployment Mode</span>
+                        <span class="text-white text-sm font-semibold bg-slate-700 px-2.5 py-1 rounded">Staging Playground</span>
+                    </div>
+                    <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
+                        <span class="text-slate-400 text-sm">Framework / Runtime</span>
+                        <span class="text-white text-sm font-semibold bg-slate-700 px-2.5 py-1 rounded">HTML5 / Tailwind CDN</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-slate-400 text-sm">SSL Encryption</span>
+                        <span class="text-emerald-400 text-sm font-semibold flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.154l7.834 3.746v3.743c0 5.485-3.52 10.024-7.834 11.332C5.686 18.665 2.166 14.127 2.166 8.643V4.9zM10 8a1 1 0 00-1 1v3a1 1 0 102 0V9a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                            Active (TLS 1.3)
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://github.com/chuwang-dev/gitops-infrastructure" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl shadow-lg shadow-brand-600/20 transition-all duration-200 text-center">
+                    View Repository
+                </a>
+                <a href="#custom-domain" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition-all duration-200 text-center">
+                    Documentation
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6 bg-slate-950/40">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+            <p>© 2026 SKT Healthcare. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-slate-300 transition">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-300 transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
