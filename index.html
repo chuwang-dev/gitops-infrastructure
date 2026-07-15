@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Library for Scroll Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <style>
         :root {
@@ -81,6 +83,45 @@
             color: var(--accent-gold);
         }
 
+        /* Live Operational Status */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(20, 20, 18, 0.8);
+            border: 1px solid var(--border-color);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-open .status-dot {
+            background-color: #2ec4b6;
+            box-shadow: 0 0 8px #2ec4b6;
+            animation: pulse-green 2s infinite;
+        }
+
+        .status-closed .status-dot {
+            background-color: var(--accent-gold);
+            box-shadow: 0 0 8px var(--accent-gold);
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(46, 196, 182, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 196, 182, 0); }
+        }
+
         nav ul {
             display: flex;
             list-style: none;
@@ -98,6 +139,13 @@
 
         nav a:hover, nav a.active {
             color: var(--accent-gold);
+        }
+
+        /* Navigation Button Container */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         /* Floating / Header Cart Button */
@@ -130,7 +178,28 @@
             font-weight: bold;
         }
 
-        /* Hero Section */
+        /* Reserve Table Button */
+        .reserve-btn-header {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            border: 1px solid var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .reserve-btn-header:hover {
+            background: transparent;
+            color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero Section (Optimized background to reference low-size asset) */
         .hero {
             height: 100vh;
             display: flex;
@@ -139,7 +208,7 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(11, 11, 10, 1)), url('logo.png') no-repeat center center;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(11, 11, 10, 1)), url('logo-optimized.webp') no-repeat center center;
             background-size: contain;
             border-bottom: 1px solid var(--border-color);
         }
@@ -210,26 +279,6 @@
         }
 
         /* About Us Section */
-        <!-- About Us Section -->
-    <section id="about">
-        <div class="section-title">
-            <p>Our Culinary Philosophy</p>
-            <h2>The Sanctuary at <span>GRA, Ikeja</span></h2>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>The Sanctuary of Gastronomy</h3>
-                <p>Nestled within the prestigious, tree-lined avenues of <strong>GRA, Ikeja</strong>, Casi fla stands as a sanctuary of sophisticated gastronomy. Far removed from the bustling energy of the commercial capital, our location was chosen to provide an exclusive, peaceful enclave where fine dining is elevated to an art form.</p>
-                <p>Our kitchen hosts a respectful dialogue between timeless Nigerian heritage and contemporary culinary techniques. Every dish is a meticulous composition of rare local ingredients, balanced native spices, and avant-garde presentations designed to challenge and delight the senses.</p>
-                <div class="about-badge">
-                    <p>"At Casi fla, the hum of Lagos fades away, replaced by the quiet prestige of an extraordinary culinary escape."</p>
-                </div>
-            </div>
-            <div class="about-image-wrapper">
-                <img src="logo.png" alt="Casi fla Fine Dining Atmosphere" class="about-image">
-            </div>
-        </div>
-    </section>
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -276,18 +325,52 @@
             border: 1px solid var(--border-color);
         }
 
-        /* Menu Section */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+        /* Interactive Menu Filters styling */
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
         }
 
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Menu Section Dynamic Transition States */
         .menu-category {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 30px;
             border-radius: 8px;
+            transition: opacity 0.4s ease, transform 0.4s ease, display 0.4s allow-discrete;
+        }
+
+        .menu-category.hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .menu-category h3 {
@@ -350,7 +433,7 @@
             color: var(--accent-gold);
         }
 
-        /* How to Order (Barcode Section) */
+        /* How to Order Section */
         .order-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -623,6 +706,127 @@
             display: block;
         }
 
+        /* Table Reservation Modal Styles */
+        .reservation-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 500px;
+            background: #0f0f0e;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 35px;
+            z-index: 1002;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reservation-modal.open {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .reservation-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .reservation-modal-header h3 {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .close-reservation {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-reservation:hover {
+            color: var(--accent-gold);
+        }
+
+        .reservation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .form-input {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 12px;
+            border-radius: 4px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .btn-reserve-submit {
+            background: var(--accent-gold);
+            color: var(--bg-color);
+            border: none;
+            padding: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-reserve-submit:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* General Overlay for Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+        }
+
+        .modal-overlay.open {
+            display: block;
+        }
+
         /* Footer & Contact Section */
         footer {
             background-color: #050504;
@@ -720,8 +924,18 @@
     <!-- Luxury Header -->
     <header>
         <div class="logo-container">
-            <img src="logo.png" alt="Casi fla Logo" class="logo-img">
+            <!-- Optimized web-ready path configured fallback -->
+            <picture>
+                <source srcset="logo-optimized.webp" type="image/webp">
+                <img src="logo.png" alt="Casi fla Logo" class="logo-img">
+            </picture>
             <div class="logo-text">Casi <span>fla</span></div>
+            
+            <!-- Operational Status Indicator -->
+            <div class="status-badge" id="statusBadge">
+                <span class="status-dot"></span>
+                <span id="statusText">Checking status...</span>
+            </div>
         </div>
         <nav>
             <ul>
@@ -731,10 +945,15 @@
                 <li><a href="#order">How to Order</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <button class="cart-btn-header" onclick="toggleCart(true)">
-                        <i class="fa-solid fa-bell-concierge"></i>
-                        Order Slip <span class="cart-count" id="cartCount">0</span>
-                    </button>
+                    <div class="header-actions">
+                        <button class="cart-btn-header" onclick="toggleCart(true)">
+                            <i class="fa-solid fa-bell-concierge"></i>
+                            Order Slip <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                        <button class="reserve-btn-header" onclick="toggleReservation(true)">
+                            Book A Table
+                        </button>
+                    </div>
                 </li>
             </ul>
         </nav>
@@ -742,19 +961,19 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>Welcome to <span>Casi fla</span></h1>
-        <p>A culinary destination where timeless Nigerian heritage meets refined classic fine dining in the heart of Ikeja.</p>
-        <a href="#menu" class="btn-gold">Explore the Menu</a>
+        <h1 data-aos="fade-up" data-aos-delay="100">Welcome to <span>Casi fla</span></h1>
+        <p data-aos="fade-up" data-aos-delay="300">A culinary destination where timeless Nigerian heritage meets refined classic fine dining in the heart of Ikeja.</p>
+        <a href="#menu" class="btn-gold" data-aos="fade-up" data-aos-delay="500">Explore the Menu</a>
     </section>
 
     <!-- About Us Section -->
     <section id="about">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
             <p>Our Culinary Philosophy</p>
             <h2>The Sanctuary at <span>GRA, Ikeja</span></h2>
         </div>
         <div class="about-content">
-            <div class="about-text">
+            <div class="about-text" data-aos="fade-right" data-aos-delay="200">
                 <h3>The Sanctuary of Gastronomy</h3>
                 <p>Nestled within the prestigious, tree-lined avenues of <strong>GRA, Ikeja</strong>, Casi fla stands as a sanctuary of sophisticated gastronomy. Far removed from the bustling energy of the commercial capital, our location was chosen to provide an exclusive, peaceful enclave where fine dining is elevated to an art form.</p>
                 <p>Our kitchen hosts a respectful dialogue between timeless Nigerian heritage and contemporary culinary techniques. Every dish is a meticulous composition of rare local ingredients, balanced native spices, and avant-garde presentations designed to challenge and delight the senses.</p>
@@ -762,22 +981,33 @@
                     <p>"At Casi fla, the hum of Lagos fades away, replaced by the quiet prestige of an extraordinary culinary escape."</p>
                 </div>
             </div>
-            <div class="about-image-wrapper">
-                <img src="logo.png" alt="Casi fla Fine Dining Atmosphere" class="about-image">
+            <div class="about-image-wrapper" data-aos="fade-left" data-aos-delay="400">
+                <picture>
+                    <source srcset="logo-optimized.webp" type="image/webp">
+                    <img src="logo.png" alt="Casi fla Fine Dining Atmosphere" class="about-image">
+                </picture>
             </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Menu Section with Filter Implementation -->
     <section id="menu">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
             <p>Curated Culinary Art</p>
             <h2>The <span>Menu</span></h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="menu-filters" data-aos="fade-up" data-aos-delay="200">
+            <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+            <button class="filter-btn" onclick="filterMenu('starters')">Starters</button>
+            <button class="filter-btn" onclick="filterMenu('mains')">Mains</button>
+            <button class="filter-btn" onclick="filterMenu('desserts')">Desserts & Drinks</button>
         </div>
         
         <div class="menu-grid">
             <!-- Starters -->
-            <div class="menu-category">
+            <div class="menu-category" data-category="starters" data-aos="fade-up">
                 <h3>Starters</h3>
                 <div class="menu-item">
                     <div class="menu-item-header">
@@ -802,7 +1032,7 @@
             </div>
 
             <!-- Mains -->
-            <div class="menu-category">
+            <div class="menu-category" data-category="mains" data-aos="fade-up" data-aos-delay="100">
                 <h3>Main Dishes</h3>
                 <div class="menu-item">
                     <div class="menu-item-header">
@@ -827,7 +1057,7 @@
             </div>
 
             <!-- Desserts & Sips -->
-            <div class="menu-category">
+            <div class="menu-category" data-category="desserts" data-aos="fade-up" data-aos-delay="200">
                 <h3>Desserts & Drinks</h3>
                 <div class="menu-item">
                     <div class="menu-item-header">
@@ -855,13 +1085,13 @@
 
     <!-- How to Order Section -->
     <section id="order">
-        <div class="section-title">
+        <div class="section-title" data-aos="fade-up">
             <p>Seamless Dining Experience</p>
             <h2>How to <span>Order</span></h2>
         </div>
         
         <div class="order-container">
-            <div class="order-steps">
+            <div class="order-steps" data-aos="fade-right" data-aos-delay="200">
                 <div class="step-card">
                     <div class="step-num">01</div>
                     <div class="step-info">
@@ -885,7 +1115,7 @@
                 </div>
             </div>
             
-            <div class="barcode-visual">
+            <div class="barcode-visual" data-aos="fade-left" data-aos-delay="400">
                 <div class="qr-placeholder">
                     <!-- Clean minimal QR SVG representing digital ordering -->
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -916,71 +1146,173 @@
         
         <div class="cart-footer">
             <div class="cart-total">
-                <span>Total:</span>
-                <span id="cartTotal">₦0</span>
+                <span>Total</span>
+                <span id="cartTotalSum">₦0</span>
             </div>
-            
             <div class="table-input-group">
                 <label for="tableSelect">Your Table Number</label>
                 <select id="tableSelect" class="table-select">
-                    <option value="" disabled selected>Select Table</option>
-                    <option value="Table 1 (VIP)">Table 1 (VIP Enclave)</option>
+                    <option value="">Select Table...</option>
+                    <option value="Table 1">Table 1</option>
                     <option value="Table 2">Table 2</option>
                     <option value="Table 3">Table 3</option>
                     <option value="Table 4">Table 4</option>
                     <option value="Table 5">Table 5</option>
-                    <option value="Table 6 (Patio)">Table 6 (Patio)</option>
-                    <option value="Table 7 (Patio)">Table 7 (Patio)</option>
                 </select>
             </div>
-            
-            <button class="btn-checkout" onclick="sendWhatsAppOrder()">
-                <i class="fa-brands fa-whatsapp"></i> Send Order to Kitchen
+            <button class="btn-checkout" onclick="checkoutWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Send order to kitchen
             </button>
         </div>
     </div>
 
-    <!-- Footer & Contact Us Section -->
+    <!-- Interactive Table Reservation Modal -->
+    <div class="modal-overlay" id="reservationOverlay" onclick="toggleReservation(false)"></div>
+    <div class="reservation-modal" id="reservationModal">
+        <div class="reservation-modal-header">
+            <h3>Reserve a Table</h3>
+            <button class="close-reservation" onclick="toggleReservation(false)">&times;</button>
+        </div>
+        <!-- Connected securely to Formspree pointing to your specified email -->
+        <form class="reservation-form" action="https://formspree.io/f/xoqzgrpw" method="POST">
+            <!-- Redirection setting to keep visitors on your page -->
+            <input type="hidden" name="_replyto" value="casijondoe@gmail.com">
+            
+            <div class="form-group">
+                <label for="resName">Full Name</label>
+                <input type="text" name="name" id="resName" class="form-input" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="resPhone">Phone Number</label>
+                <input type="tel" name="phone" id="resPhone" class="form-input" placeholder="e.g. 08143832354" required>
+            </div>
+            <div class="form-group">
+                <label for="resGuests">Number of Guests</label>
+                <input type="number" name="guests" id="resGuests" class="form-input" min="1" max="20" placeholder="2" required>
+            </div>
+            <div class="form-group">
+                <label for="resDateTime">Preferred Date & Time</label>
+                <input type="datetime-local" name="date_time" id="resDateTime" class="form-input" required>
+            </div>
+            <button type="submit" class="btn-reserve-submit">Confirm Reservation Request</button>
+        </form>
+    </div>
+
+    <!-- Contact & Footer Section -->
     <footer id="contact">
         <div class="footer-grid">
-            <div class="footer-col">
+            <div class="footer-col" data-aos="fade-up">
                 <h4>Casi fla</h4>
-                <p>A premier convergence of classic taste, high design, and premium Nigerian fine dining.</p>
+                <p>Sophisticated fine dining situated in the exclusive, serene avenues of GRA Ikeja, where every bite is an artistic homage to luxury native gastronomy.</p>
+            </div>
+            <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+                <h4>Dining Hours</h4>
+                <p>Monday - Thursday: 12:00 PM - 10:00 PM</p>
+                <p>Friday - Sunday: 12:00 PM - 11:00 PM</p>
+                <p><em>Kitchen closes 30 mins before closing.</em></p>
+            </div>
+            <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+                <h4>The Sanctuary</h4>
+                <p>10b Itohan Avenue, off Isaac John, GRA, Ikeja, Lagos, Nigeria</p>
+                <p>Phone: 08143832354</p>
+                <p>Email: casijondoe@gmail.com</p>
+            </div>
+            <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+                <h4>Follow Our Journey</h4>
                 <div class="social-icons">
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://wa.me/2348143832354" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
-            </div>
-            <div class="footer-col">
-                <h4>Hours</h4>
-                <p>Mon - Thurs: 12:00 PM - 11:00 PM</p>
-                <p>Fri - Sun: 12:00 PM - 02:00 AM</p>
-                <p style="color: var(--accent-gold);">Reservations Highly Recommended</p>
-            </div>
-            <div class="footer-col">
-                <h4>Location</h4>
-                <p>GRA, Ikeja</p>
-                <p>Lagos, Nigeria</p>
-                <a href="mailto:concierge@casifla.com">concierge@casifla.com</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Casi fla Restaurant. Designed for elite tastes in Ikeja, Lagos.</p>
+            <p>&copy; 2026 Casi fla. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript logic for WhatsApp Ordering -->
+    <!-- JS Libraries and Custom Script Modules -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Replace this with your restaurant's official WhatsApp Business number (e.g. "2348030000000")
-        const RESTAURANT_WHATSAPP_NUMBER = "2348030000000"; 
+        // Initialize AOS Scroll Animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-quad',
+            once: true,
+            offset: 100
+        });
 
+        // 1. Live Operational Status Indicator Logic
+        function updateOperationalStatus() {
+            const now = new Date();
+            // Convert to West Africa Time (WAT / Lagos - UTC+1)
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const lagosTime = new Date(utc + (3600000 * 1)); 
+            
+            const hours = lagosTime.getHours();
+            const minutes = lagosTime.getMinutes();
+            const day = lagosTime.getDay(); // 0: Sunday, 5: Friday, 6: Saturday
+
+            const badge = document.getElementById('statusBadge');
+            const text = document.getElementById('statusText');
+
+            // Set times (Friday-Sunday closes at 11 PM, Mon-Thu at 10 PM)
+            const closingHour = (day === 0 || day === 5 || day === 6) ? 23 : 22;
+            const openingHour = 12;
+
+            if (hours >= openingHour && hours < closingHour) {
+                badge.className = 'status-badge status-open';
+                text.innerHTML = `Open Now &bull; Closing at ${closingHour === 23 ? '11:00 PM' : '10:00 PM'}`;
+            } else {
+                badge.className = 'status-badge status-closed';
+                text.innerHTML = `Closed &bull; Opens at 12:00 PM`;
+            }
+        }
+        
+        // Execute status update instantly and poll every 30 seconds
+        updateOperationalStatus();
+        setInterval(updateOperationalStatus, 30000);
+
+        // 2. Interactive Menu Filter Logic
+        function filterMenu(category) {
+            // Update active state on buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const blocks = document.querySelectorAll('.menu-category');
+            blocks.forEach(block => {
+                if (category === 'all' || block.getAttribute('data-category') === category) {
+                    block.classList.remove('hidden');
+                } else {
+                    block.classList.add('hidden');
+                }
+            });
+
+            // Refresh AOS offsets to account for height change
+            setTimeout(() => { AOS.refresh(); }, 400);
+        }
+
+        // 3. Table Reservation Modal Handlers
+        function toggleReservation(show) {
+            const modal = document.getElementById('reservationModal');
+            const overlay = document.getElementById('reservationOverlay');
+            if (show) {
+                modal.classList.add('open');
+                overlay.classList.add('open');
+            } else {
+                modal.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+        }
+
+        // 4. Custom Sliding Shopping Cart Module
         let cart = [];
 
-        function toggleCart(open) {
+        function toggleCart(show) {
             const sidebar = document.getElementById('cartSidebar');
             const overlay = document.getElementById('cartOverlay');
-            if (open) {
+            if (show) {
                 sidebar.classList.add('open');
                 overlay.classList.add('open');
             } else {
@@ -990,15 +1322,13 @@
         }
 
         function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-            if (existingItem) {
-                existingItem.qty += 1;
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
             } else {
                 cart.push({ name, price, qty: 1 });
             }
             updateCartUI();
-            
-            // Open the cart automatically so the user sees their updated selection
             toggleCart(true);
         }
 
@@ -1014,93 +1344,71 @@
         }
 
         function updateCartUI() {
+            const countElem = document.getElementById('cartCount');
             const container = document.getElementById('cartItems');
-            const countBadge = document.getElementById('cartCount');
-            const totalLabel = document.getElementById('cartTotal');
+            const totalSumElem = document.getElementById('cartTotalSum');
             
-            // Update total badge count
-            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-            countBadge.innerText = totalItems;
-
+            let totalItems = 0;
+            let totalPrice = 0;
+            
             if (cart.length === 0) {
                 container.innerHTML = `<p class="cart-empty-msg">Your order slip is empty. Select some delicacies to begin.</p>`;
-                totalLabel.innerText = "₦0";
+                countElem.innerText = '0';
+                totalSumElem.innerText = '₦0';
                 return;
             }
 
-            let html = "";
-            let grandTotal = 0;
-
+            container.innerHTML = '';
             cart.forEach(item => {
-                const itemTotal = item.price * item.qty;
-                grandTotal += itemTotal;
-                html += `
-                    <div class="cart-item">
-                        <div class="cart-item-details">
-                            <h5>${item.name}</h5>
-                            <p>₦${item.price.toLocaleString()}</p>
-                        </div>
-                        <div class="cart-item-qty">
-                            <button class="qty-btn" onclick="changeQty('${item.name}', -1)">-</button>
-                            <span>${item.qty}</span>
-                            <button class="qty-btn" onclick="changeQty('${item.name}', 1)">+</button>
-                        </div>
+                totalItems += item.qty;
+                totalPrice += (item.price * item.qty);
+
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-details">
+                        <h5>${item.name}</h5>
+                        <p>₦${(item.price * item.qty).toLocaleString()}</p>
+                    </div>
+                    <div class="cart-item-qty">
+                        <button class="qty-btn" onclick="changeQty('${item.name}', -1)">-</button>
+                        <span>${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty('${item.name}', 1)">+</button>
                     </div>
                 `;
+                container.appendChild(div);
             });
 
-            container.innerHTML = html;
-            totalLabel.innerText = `₦${grandTotal.toLocaleString()}`;
+            countElem.innerText = totalItems;
+            totalSumElem.innerText = `₦${totalPrice.toLocaleString()}`;
         }
 
-        function sendWhatsAppOrder() {
-            if (cart.length === 0) {
-                alert("Your order slip is empty! Please add some delicious food first.");
+        function checkoutWhatsApp() {
+            const table = document.getElementById('tableSelect').value;
+            if (!table) {
+                alert('Please select your Table Number before sending the order to the kitchen!');
                 return;
             }
 
-            const tableNum = document.getElementById('tableSelect').value;
-            if (!tableNum) {
-                alert("Please select your table number before submitting your order!");
-                return;
-            }
+            let message = `*NEW ORDER - CASI FLA*\n`;
+            message += `-------------------------\n`;
+            message += `*Location:* 10b Itohan Avenue, GRA Ikeja\n`;
+            message += `*Table:* ${table}\n\n`;
+            message += `*Items Ordered:*\n`;
 
-            // Generate precise local timestamp (2026)
-            const orderTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-            // Format WhatsApp Text using elegant Markdown formatting
-            let message = `*🛎️ NEW CASI FLA FINE DINING ORDER* \n`;
-            message += `------------------------------------\n`;
-            message += `📍 *Location:* GRA, Ikeja\n`;
-            message += `🪟 *Table:* ${tableNum}\n`;
-            message += `⏰ *Time:* ${orderTime}\n`;
-            message += `------------------------------------\n\n`;
-
-            let total = 0;
-            cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                message += `${index + 1}. *${item.name}* (x${item.qty}) — _₦${itemTotal.toLocaleString()}_\n`;
+            let grandTotal = 0;
+            cart.forEach(item => {
+                const itemCost = item.price * item.qty;
+                grandTotal += itemCost;
+                message += `• ${item.qty}x ${item.name} (~₦${itemCost.toLocaleString()}~)\n`;
             });
 
-            message += `\n------------------------------------\n`;
-            message += `💰 *GRAND TOTAL:* *₦${total.toLocaleString()}*\n`;
-            message += `------------------------------------\n`;
-            message += `_Please confirm preparation start on kitchen tablet._`;
+            message += `\n*Grand Total:* ₦${grandTotal.toLocaleString()}\n`;
+            message += `-------------------------\n`;
+            message += `Please prepare our culinary order. Thank you!`;
 
-            // URL Encode the string safely
-            const encodedText = encodeURIComponent(message);
-            
-            // Generate link (works flawlessly on mobile and web)
-            const whatsappUrl = `https://wa.me/${RESTAURANT_WHATSAPP_NUMBER}?text=${encodedText}`;
-
-            // Reset cart on successful checkout redirect
-            cart = [];
-            updateCartUI();
-            toggleCart(false);
-
-            // Redirect user to WhatsApp
-            window.open(whatsappUrl, '_blank');
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/2348143832354?text=${encoded}`, '_blank');
         }
     </script>
 </body>

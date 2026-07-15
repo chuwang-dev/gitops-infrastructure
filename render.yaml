@@ -1,7 +1,20 @@
 services:
+  # 1. Production Webserver (Tracks the 'main' branch)
   - type: web
-    name: gitops-sample-webserver
+    name: gitops-production-webserver
     runtime: static
+    branch: main
+    publishDir: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # 2. Staging Webserver (Tracks the 'staging' branch)
+  - type: web
+    name: gitops-staging-webserver
+    runtime: static
+    branch: staging
     publishDir: .
     routes:
       - type: rewrite

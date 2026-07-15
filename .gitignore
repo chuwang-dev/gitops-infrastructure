@@ -1,0 +1,9 @@
+# Ignore local Terraform state and provider binaries
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Ignore downloaded zip installers and packages
+*.zip
+*.tar.gz
