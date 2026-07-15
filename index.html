@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitOps Control Center</title>
+    <title>Casi fla :: Innovation Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -11,103 +11,164 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            900: '#14532d',
-                        }
-                    }
-                }
-            }
+                        'casifla': {
+                            'white': '#FFFFFF',
+                            'light': '#F8F9FA',
+                            'accent': '#FF5722', /* Inspired by the orange flame in your logo */
+                            'dark': '#121212',
+                            'darker': '#0A0A0A',
+                            'slate': '#404040'
+                        },
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'mono': ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'slow-pulse': 'slowPulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slowPulse: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.7 },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                },
+            },
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        .custom-background {
+            background-color: #121212;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(24, 100%, 57%, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(24, 100%, 57%, 0.1) 0px, transparent 50%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23404040' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h8v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-logo {
+            filter: drop-shadow(0 0 15px rgba(255, 87, 34, 0.3));
+        }
+
+        /* Subtle floating animation for the logo */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
+<body class="custom-background text-casifla-light font-inter min-h-screen flex flex-col justify-between">
 
     <!-- Header / Navigation -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <!-- Brand Logo -->
+    <header class="border-b border-casifla-slate bg-casifla-darker/60 backdrop-blur-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Brand Logo (referenced from repo root) -->
             <div class="flex items-center gap-3">
-                <!-- SVG Green Cross/Tech Logo Placeholder (Perfect for a clean tech/pharmaceutical vibe) -->
-                <div class="bg-brand-500/10 p-2 rounded-lg border border-brand-500/30">
-                    <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                    </svg>
-                </div>
-                <div>
-                    <span class="text-xl font-extrabold tracking-tight text-white block">SKT Healthcare</span>
-                    <span class="text-xs text-slate-400 tracking-wider uppercase font-semibold">Pharmaceuticals</span>
+                <img src="IMG_0153.jpg" alt="Casi fla Logo" class="w-12 h-12 rounded-full border border-casifla-slate/30 bg-casifla-dark hover:animate-float">
+                <div class="flex flex-col">
+                    <span class="text-2xl font-extrabold tracking-tighter text-casifla-white">Casi fla</span>
+                    <span class="text-xs font-mono text-casifla-accent tracking-widest uppercase animate-slow-pulse">Innovation</span>
                 </div>
             </div>
             
-            <!-- Badge Status -->
-            <div>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-500 border border-brand-500/20 animate-pulse">
-                    ● Pipeline Online
+            <!-- Dashboard Quick Access and Badge -->
+            <div class="flex items-center gap-4">
+                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-casifla-accent/10 text-casifla-accent border border-casifla-accent/20">
+                    <span class="relative flex h-2 w-2 mr-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-casifla-accent opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-casifla-accent"></span>
+                    </span>
+                    Core Systems Active
                 </span>
+                <a href="#systems" class="hidden md:block px-5 py-2.5 bg-casifla-accent hover:bg-casifla-accent/90 text-casifla-white text-sm font-semibold rounded-lg transition-all duration-150">
+                    Control Panel
+                </a>
             </div>
         </div>
     </header>
 
     <!-- Main Hero Section -->
-    <main class="flex-grow flex items-center justify-center px-6 py-12">
-        <div class="max-w-3xl text-center space-y-8">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Modern Healthcare Delivery, <br>
-                <span class="bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent">Streamlined by GitOps</span>
-            </h1>
+    <main class="flex-grow flex items-center justify-center px-6 py-16 md:py-24">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 items-center gap-16">
             
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Welcome to your deployment portal. This application is automatically compiled, tested, and distributed globally using modern infrastructure-as-code pipelines.
-            </p>
+            <!-- Hero Content -->
+            <div class="space-y-10 text-center md:text-left">
+                <!-- Large Logo integration in hero -->
+                <img src="IMG_0153.jpg" alt="Casi fla Logo Large" class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-casifla-accent/30 shadow-2xl hero-logo mx-auto md:mx-0">
+                
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-casifla-white leading-tight">
+                    Where Flame<br> meets <span class="bg-gradient-to-r from-casifla-accent to-casifla-white bg-clip-text text-transparent">Flux</span>
+                </h1>
+                
+                <p class="text-xl text-casifla-light/70 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    Casi fla is your central nexus for pioneering innovations. Accelerating ideas into high-impact realities through agile development, robust infrastructure, and automated GitOps precision.
+                </p>
 
-            <!-- Dashboard Mockup Card -->
-            <div class="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 md:p-8 shadow-2xl text-left max-w-xl mx-auto backdrop-blur-sm">
-                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                    <span>⚡</span> System Status Indicators
-                </h3>
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
-                        <span class="text-slate-400 text-sm">Deployment Mode</span>
-                        <span class="text-white text-sm font-semibold bg-slate-700 px-2.5 py-1 rounded">Staging Playground</span>
-                    </div>
-                    <div class="flex items-center justify-between border-b border-slate-700/50 pb-3">
-                        <span class="text-slate-400 text-sm">Framework / Runtime</span>
-                        <span class="text-white text-sm font-semibold bg-slate-700 px-2.5 py-1 rounded">HTML5 / Tailwind CDN</span>
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-slate-400 text-sm">SSL Encryption</span>
-                        <span class="text-emerald-400 text-sm font-semibold flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L10 1.154l7.834 3.746v3.743c0 5.485-3.52 10.024-7.834 11.332C5.686 18.665 2.166 14.127 2.166 8.643V4.9zM10 8a1 1 0 00-1 1v3a1 1 0 102 0V9a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                            Active (TLS 1.3)
-                        </span>
-                    </div>
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                    <a href="#systems" class="w-full sm:w-auto px-10 py-4 bg-casifla-white hover:bg-casifla-light text-casifla-darker font-bold rounded-xl shadow-lg transition-all duration-200 text-center">
+                        Explore Systems
+                    </a>
+                    <a href="https://github.com/chuwang-dev/gitops-infrastructure" target="_blank" class="w-full sm:w-auto px-10 py-4 bg-casifla-darker hover:bg-casifla-slate/20 text-casifla-light font-semibold rounded-xl border border-casifla-slate/50 transition-all duration-200 text-center">
+                        Repository Control
+                    </a>
                 </div>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://github.com/chuwang-dev/gitops-infrastructure" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-semibold rounded-xl shadow-lg shadow-brand-600/20 transition-all duration-200 text-center">
-                    View Repository
-                </a>
-                <a href="#custom-domain" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 transition-all duration-200 text-center">
-                    Documentation
-                </a>
+            <!-- Visual Component (System Card Mockup) -->
+            <div class="bg-casifla-darker/60 border border-casifla-slate/30 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
+                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-casifla-slate/30">
+                    <div class="p-3 bg-casifla-accent/10 border border-casifla-accent/30 rounded-xl">
+                        <svg class="w-8 h-8 text-casifla-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-casifla-white">Flux Core Systems</h3>
+                        <p class="text-sm text-casifla-light/60">Automated Pipeline Integrity Check</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-casifla-light/80">Active Environment</span>
+                        <span class="text-xs font-mono text-casifla-white px-3 py-1 rounded bg-casifla-slate/30">Staging Playground</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-casifla-light/80">GitOps Control Center</span>
+                        <span class="text-xs font-mono text-emerald-400 font-bold px-3 py-1 rounded bg-emerald-950/50 border border-emerald-900/50">Online / Syncing</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-casifla-light/80">Last Deployment Pulse</span>
+                        <span class="text-xs font-mono text-casifla-accent font-bold">12 seconds ago</span>
+                    </div>
+                    <div class="pt-4 border-t border-casifla-slate/30">
+                        <div class="w-full bg-casifla-slate/20 rounded-full h-1.5">
+                          <div class="bg-casifla-accent h-1.5 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <p class="text-xs text-casifla-light/50 mt-2 text-center">Pipeline Performance Score: <span class="font-bold text-casifla-light">85%</span></p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 py-6 bg-slate-950/40">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-            <p>© 2026 SKT Healthcare. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-slate-300 transition">Privacy Policy</a>
-                <a href="#" class="hover:text-slate-300 transition">Terms of Service</a>
+    <footer class="border-t border-casifla-slate bg-casifla-darker/60 backdrop-blur-lg py-8">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-6 text-sm text-casifla-light/60">
+            <div class="flex items-center gap-3 justify-center md:justify-start">
+                 <img src="IMG_0153.jpg" alt="Casi fla Logo Footer" class="w-8 h-8 rounded-full border border-casifla-slate/30 bg-casifla-dark">
+                <p>&copy; 2026 Casi fla Innovations. All system flux synchronized.</p>
+            </div>
+            <div class="flex gap-6 justify-center md:justify-end font-mono text-xs">
+                <a href="#" class="hover:text-casifla-accent transition">Status Ops</a>
+                <a href="#" class="hover:text-casifla-accent transition">API Hub</a>
+                <a href="#" class="hover:text-casifla-accent transition">Terms of Flux</a>
             </div>
         </div>
     </footer>
