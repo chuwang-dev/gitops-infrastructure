@@ -3,173 +3,628 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casi fla :: Innovation Hub</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'casifla': {
-                            'white': '#FFFFFF',
-                            'light': '#F8F9FA',
-                            'accent': '#FF5722', /* Inspired by the orange flame in your logo */
-                            'dark': '#121212',
-                            'darker': '#0A0A0A',
-                            'slate': '#404040'
-                        },
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                        'mono': ['Space Mono', 'monospace'],
-                    },
-                    animation: {
-                        'slow-pulse': 'slowPulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        slowPulse: {
-                            '0%, 100%': { opacity: 1 },
-                            '50%': { opacity: 0.7 },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                    },
-                },
-            },
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+    <title>Casi fla — Fine Dining Ikeja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .custom-background {
-            background-color: #121212;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(24, 100%, 57%, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, hsla(24, 100%, 57%, 0.1) 0px, transparent 50%),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23404040' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h8v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h9v4h1v-4h8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center;
+        :root {
+            --bg-color: #0b0b0a;
+            --card-bg: #141412;
+            --accent-gold: #d4af37;
+            --text-light: #f5f5f3;
+            --text-muted: #a3a39e;
+            --border-color: #2a2a24;
         }
 
-        .hero-logo {
-            filter: drop-shadow(0 0 15px rgba(255, 87, 34, 0.3));
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        /* Subtle floating animation for the logo */
-        .float {
-            animation: float 6s ease-in-out infinite;
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        /* Luxury Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            background: rgba(11, 11, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo-text span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(11, 11, 10, 1)), url('logo.png') no-repeat center center;
+            background-size: contain;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* General Section Layout */
+        section {
+            padding: 100px 8% 80px 8%;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--accent-gold);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* About Section (Ikeja Focus) */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-badge {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .about-badge p {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu-item {
+            margin-bottom: 25px;
+        }
+
+        .menu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .menu-item-name {
+            font-size: 1.15rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .menu-item-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .menu-item-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* How to Order (Barcode Section) */
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .order-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 20px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .step-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .step-info h4 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        .step-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .barcode-visual {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255,255,255,0.05);
+        }
+
+        /* SVG-based clean aesthetic QR code */
+        .qr-placeholder svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .barcode-visual h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .barcode-visual p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer & Contact Section */
+        footer {
+            background-color: #050504;
+            padding: 60px 8% 30px 8%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--bg-color);
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            nav {
+                display: none; /* Can build toggle hamburger menu later */
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .about-content, .order-container {
+                grid-template-columns: 1fr;
+            }
+            section {
+                padding: 80px 5% 60px 5%;
+            }
         }
     </style>
 </head>
-<body class="custom-background text-casifla-light font-inter min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- Header / Navigation -->
-    <header class="border-b border-casifla-slate bg-casifla-darker/60 backdrop-blur-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <!-- Brand Logo (referenced from repo root) -->
-            <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Casi fla Logo" class="w-12 h-12 rounded-full border border-casifla-slate/30 bg-casifla-dark hover:animate-float">
-                <div class="flex flex-col">
-                    <span class="text-2xl font-extrabold tracking-tighter text-casifla-white">Casi fla</span>
-                    <span class="text-xs font-mono text-casifla-accent tracking-widest uppercase animate-slow-pulse">Innovation</span>
-                </div>
-            </div>
-            
-            <!-- Dashboard Quick Access and Badge -->
-            <div class="flex items-center gap-4">
-                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-casifla-accent/10 text-casifla-accent border border-casifla-accent/20">
-                    <span class="relative flex h-2 w-2 mr-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-casifla-accent opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-casifla-accent"></span>
-                    </span>
-                    Core Systems Active
-                </span>
-                <a href="#systems" class="hidden md:block px-5 py-2.5 bg-casifla-accent hover:bg-casifla-accent/90 text-casifla-white text-sm font-semibold rounded-lg transition-all duration-150">
-                    Control Panel
-                </a>
-            </div>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Casi fla Logo" class="logo-img">
+            <div class="logo-text">Casi <span>fla</span></div>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#order">How to Order</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Hero Section -->
-    <main class="flex-grow flex items-center justify-center px-6 py-16 md:py-24">
-        <div class="max-w-6xl w-full grid md:grid-cols-2 items-center gap-16">
-            
-            <!-- Hero Content -->
-            <div class="space-y-10 text-center md:text-left">
-                <!-- Large Logo integration in hero -->
-                <img src="logo.png" alt="Casi fla Logo Large" class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-casifla-accent/30 shadow-2xl hero-logo mx-auto md:mx-0">
-                
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-casifla-white leading-tight">
-                    Where Flame<br> meets <span class="bg-gradient-to-r from-casifla-accent to-casifla-white bg-clip-text text-transparent">Flux</span>
-                </h1>
-                
-                <p class="text-xl text-casifla-light/70 max-w-xl mx-auto md:mx-0 leading-relaxed">
-                    Casi fla is your central nexus for pioneering innovations. Accelerating ideas into high-impact realities through agile development, robust infrastructure, and automated GitOps precision.
-                </p>
+    <section id="home" class="hero">
+        <h1>Welcome to <span>Casi fla</span></h1>
+        <p>A culinary destination where timeless Nigerian heritage meets refined classic fine dining in the heart of Ikeja.</p>
+        <a href="#menu" class="btn-gold">Explore the Menu</a>
+    </section>
 
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                    <a href="#systems" class="w-full sm:w-auto px-10 py-4 bg-casifla-white hover:bg-casifla-light text-casifla-darker font-bold rounded-xl shadow-lg transition-all duration-200 text-center">
-                        Explore Systems
-                    </a>
-                    <a href="https://github.com/chuwang-dev/gitops-infrastructure" target="_blank" class="w-full sm:w-auto px-10 py-4 bg-casifla-darker hover:bg-casifla-slate/20 text-casifla-light font-semibold rounded-xl border border-casifla-slate/50 transition-all duration-200 text-center">
-                        Repository Control
-                    </a>
+    <section id="about">
+        <div class="section-title">
+            <p>Our Culinary Heritage</p>
+            <h2>An Elite Taste of <span>Ikeja</span></h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>The Art of Dining, Reimagined</h3>
+                <p>Located in the secure and peaceful residential enclave of Ikeja, Lagos, Casi fla represents the pinnacle of premium Nigerian culinary experiences.</p>
+                <p>We blend local techniques passed down through generations with avant-garde presentations. Our ingredients are sourced daily from premium local farmers to guarantee unparalleled quality on every single plate.</p>
+                <div class="about-badge">
+                    <p>"Where elite service, luxury ambience, and rich Nigerian flavours coalesce into memory."</p>
+                </div>
+            </div>
+            <div class="about-image-wrapper">
+                <img src="logo.png" alt="Casi fla Fine Dining Atmosphere" class="about-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="section-title">
+            <p>Curated Culinary Art</p>
+            <h2>The <span>Menu</span></h2>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-category">
+                <h3>Starters</h3>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-name">Gourmet Suya Carpaccio</span>
+                        <span class="menu-item-price">₦14,500</span>
+                    </div>
+                    <p class="menu-item-desc">Premium beef tenderloin thin-crusted with authentic local Yaji spice, cold-smoked and served with wild microgreens.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-name">Gilded Yam Balls</span>
+                        <span class="menu-item-price">₦10,000</span>
+                    </div>
+                    <p class="menu-item-desc">Crispy golden yam purée infused with truffle oil, wrapped in an edible gold leaf, served with sweet pepper dip.</p>
                 </div>
             </div>
 
-            <!-- Visual Component (System Card Mockup) -->
-            <div class="bg-casifla-darker/60 border border-casifla-slate/30 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
-                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-casifla-slate/30">
-                    <div class="p-3 bg-casifla-accent/10 border border-casifla-accent/30 rounded-xl">
-                        <svg class="w-8 h-8 text-casifla-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <div class="menu-category">
+                <h3>Main Dishes</h3>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-name">Royal Seafood Okra</span>
+                        <span class="menu-item-price">₦35,000</span>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-casifla-white">Flux Core Systems</h3>
-                        <p class="text-sm text-casifla-light/60">Automated Pipeline Integrity Check</p>
-                    </div>
+                    <p class="menu-item-desc">Plump prawns, calamari, fresh lobster tail cooked in rich, aromatic whipped okra, paired with premium oat swallow.</p>
                 </div>
-                
-                <div class="space-y-6">
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-casifla-light/80">Active Environment</span>
-                        <span class="text-xs font-mono text-casifla-white px-3 py-1 rounded bg-casifla-slate/30">Staging Playground</span>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-name">Slow-Braised Short Rib Jollof</span>
+                        <span class="menu-item-price">₦32,000</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-casifla-light/80">GitOps Control Center</span>
-                        <span class="text-xs font-mono text-emerald-400 font-bold px-3 py-1 rounded bg-emerald-950/50 border border-emerald-900/50">Online / Syncing</span>
+                    <p class="menu-item-desc">24-hour red wine-braised short rib served over wood-fired premium smoky Jollof rice with charred plantains.</p>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>Desserts & Drinks</h3>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-name">Puff-Puff Profiteroles</span>
+                        <span class="menu-item-price">₦9,500</span>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-casifla-light/80">Last Deployment Pulse</span>
-                        <span class="text-xs font-mono text-casifla-accent font-bold">12 seconds ago</span>
+                    <p class="menu-item-desc">Light, airy traditional puff-puff stuffed with Zobo-infused cream and drizzled with warm salted caramel sauce.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-name">Hibiscus Sparkler (Zobo)</span>
+                        <span class="menu-item-price">₦7,000</span>
                     </div>
-                    <div class="pt-4 border-t border-casifla-slate/30">
-                        <div class="w-full bg-casifla-slate/20 rounded-full h-1.5">
-                          <div class="bg-casifla-accent h-1.5 rounded-full" style="width: 85%"></div>
-                        </div>
-                        <p class="text-xs text-casifla-light/50 mt-2 text-center">Pipeline Performance Score: <span class="font-bold text-casifla-light">85%</span></p>
-                    </div>
+                    <p class="menu-item-desc">Artisanal hibiscus flower reduction spiked with ginger essence, fresh mint leaves, and premium sparkling nectar.</p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
-    <footer class="border-t border-casifla-slate bg-casifla-darker/60 backdrop-blur-lg py-8">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-6 text-sm text-casifla-light/60">
-            <div class="flex items-center gap-3 justify-center md:justify-start">
-                 <img src="logo.png" alt="Casi fla Logo Footer" class="w-8 h-8 rounded-full border border-casifla-slate/30 bg-casifla-dark">
-                <p>&copy; 2026 Casi fla Innovations. All system flux synchronized.</p>
+    <section id="order">
+        <div class="section-title">
+            <p>Seamless Dining Experience</p>
+            <h2>How to <span>Order</span></h2>
+        </div>
+        
+        <div class="order-container">
+            <div class="order-steps">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-info">
+                        <h4>Scan the Barcode</h4>
+                        <p>Locate the digital plaque at your table or use the barcode displayed here. Open your camera app.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-info">
+                        <h4>Configure Your Feast</h4>
+                        <p>Browse our beautiful interactive menu, specify dietary preferences, and select your table number.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-info">
+                        <h4>Instant Preparation</h4>
+                        <p>Your order is sent instantly directly to our culinary chefs. Relax and enjoy our custom ambient jazz.</p>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-6 justify-center md:justify-end font-mono text-xs">
-                <a href="#" class="hover:text-casifla-accent transition">Status Ops</a>
-                <a href="#" class="hover:text-casifla-accent transition">API Hub</a>
-                <a href="#" class="hover:text-casifla-accent transition">Terms of Flux</a>
+            
+            <div class="barcode-visual">
+                <div class="qr-placeholder">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5,5 h30 v30 h-30 z M15,15 h10 v10 h-10 z" fill="#141412" />
+                        <path d="M65,5 h30 v30 h-30 z M75,15 h10 v10 h-10 z" fill="#141412" />
+                        <path d="M5,65 h30 v30 h-30 z M15,75 h10 v10 h-10 z" fill="#141412" />
+                        <path d="M45,10 h10 v10 h-10 z M55,25 h10 v5 h-10 z M40,40 h10 v10 h-10 z M50,55 h15 v10 h-15 z M80,45 h10 v20 h-10 z M45,75 h10 v15 h-10 z M75,75 h15 v5 h-15 z" fill="#d4af37" />
+                    </svg>
+                </div>
+                <h3>Scan to Order</h3>
+                <p>Hover your smartphone camera over the code above to access the digital checkout menu.</p>
             </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Casi fla</h4>
+                <p>A premier convergence of classic taste, high design, and premium Nigerian fine dining.</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon - Thurs: 12:00 PM - 11:00 PM</p>
+                <p>Fri - Sun: 12:00 PM - 02:00 AM</p>
+                <p style="color: var(--accent-gold);">Reservations Highly Recommended</p>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>GRA, Ikeja</p>
+                <p>Lagos, Nigeria</p>
+                <a href="mailto:concierge@casifla.com">concierge@casifla.com</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Casi fla Restaurant. Designed for elite tastes in Ikeja, Lagos.</p>
         </div>
     </footer>
 
