@@ -991,13 +991,61 @@
     </section>
 
     <!-- Menu Section with Filter Implementation -->
+    <style>
+        /* Gallery Grid & Card Styling */
+        .gallery-section {
+            background-color: #0b0b0a;
+            padding: 60px 0;
+        }
+
+        .food-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+
+        .gallery-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2); /* Subtle gold border */
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+    </style>
+
     <section id="menu">
         <div class="section-title" data-aos="fade-up">
             <p>Curated Culinary Art</p>
             <h2>The <span>Menu</span></h2>
         </div>
 
-        <!-- Category Filters -->
         <div class="menu-filters" data-aos="fade-up" data-aos-delay="200">
             <button class="filter-btn active" onclick="filterMenu('all')">All</button>
             <button class="filter-btn" onclick="filterMenu('starters')">Starters</button>
@@ -1006,7 +1054,6 @@
         </div>
         
         <div class="menu-grid">
-            <!-- Starters -->
             <div class="menu-category" data-category="starters" data-aos="fade-up">
                 <h3>Starters</h3>
                 <div class="menu-item">
@@ -1031,7 +1078,6 @@
                 </div>
             </div>
 
-            <!-- Mains -->
             <div class="menu-category" data-category="mains" data-aos="fade-up" data-aos-delay="100">
                 <h3>Main Dishes</h3>
                 <div class="menu-item">
@@ -1055,30 +1101,34 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Desserts & Sips -->
-            <div class="menu-category" data-category="desserts" data-aos="fade-up" data-aos-delay="200">
-                <h3>Desserts & Drinks</h3>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Puff-Puff Profiteroles</span>
-                        <span class="menu-item-price">₦9,500</span>
-                    </div>
-                    <p class="menu-item-desc">Light, airy traditional puff-puff stuffed with Zobo-infused cream and drizzled with warm salted caramel sauce.</p>
-                    <button class="add-to-cart-btn" onclick="addToCart('Puff-Puff Profiteroles', 9500)">
-                        <i class="fa-solid fa-plus"></i> Add to Order
-                    </button>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <span class="menu-item-name">Hibiscus Sparkler (Zobo)</span>
-                        <span class="menu-item-price">₦7,000</span>
-                    </div>
-                    <p class="menu-item-desc">Artisanal hibiscus flower reduction spiked with ginger essence, fresh mint leaves, and premium sparkling nectar.</p>
-                    <button class="add-to-cart-btn" onclick="addToCart('Hibiscus Sparkler (Zobo)', 7000)">
-                        <i class="fa-solid fa-plus"></i> Add to Order
-                    </button>
-                </div>
+    <section id="gallery" class="gallery-section">
+        <div class="section-title" data-aos="fade-up">
+            <p>Visual Feast</p>
+            <h2>Our <span>Signature Dishes</span></h2>
+        </div>
+        
+        <div class="food-gallery-grid" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-card">
+                <img src="egusi.webp" alt="Tantalizing Egusi Soup" loading="lazy">
+                <div class="gallery-overlay-text">Tantalizing Egusi Soup</div>
+            </div>
+            
+            <div class="gallery-card">
+                <img src="okra.webp" alt="Tasty Okra Soup" loading="lazy">
+                <div class="gallery-overlay-text">Tasty Okra Soup</div>
+            </div>
+            
+            <div class="gallery-card">
+                <img src="stew.webp" alt="Gourmet Tomato Stew" loading="lazy">
+                <div class="gallery-overlay-text">Gourmet Tomato Stew</div>
+            </div>
+            
+            <div class="gallery-card">
+                <img src="ogbono.webp" alt="Classic Ogbono Soup" loading="lazy">
+                <div class="gallery-overlay-text">Classic Ogbono Soup</div>
             </div>
         </div>
     </section>
@@ -1089,50 +1139,6 @@
             <p>Seamless Dining Experience</p>
             <h2>How to <span>Order</span></h2>
         </div>
-
-        .gallery-section {
-            background-color: #0b0b0a;
-        }
-
-        .food-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .gallery-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            aspect-ratio: 1 / 1;
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .gallery-overlay-text {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            color: var(--text-light);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-align: center;
-        }
         <div class="order-container">
             <div class="order-steps" data-aos="fade-right" data-aos-delay="200">
                 <div class="step-card">
