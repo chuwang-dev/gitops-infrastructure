@@ -1082,14 +1082,57 @@
             </div>
         </div>
     </section>
-
+       
     <!-- How to Order Section -->
     <section id="order">
         <div class="section-title" data-aos="fade-up">
             <p>Seamless Dining Experience</p>
             <h2>How to <span>Order</span></h2>
         </div>
-        
+
+        .gallery-section {
+            background-color: #0b0b0a;
+        }
+
+        .food-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: var(--text-light);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+        }
         <div class="order-container">
             <div class="order-steps" data-aos="fade-right" data-aos-delay="200">
                 <div class="step-card">
