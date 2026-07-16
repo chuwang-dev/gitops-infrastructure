@@ -3,15 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casi fla — Fine Dining Ikeja</title>
+    <title>Casi fla — Fine Dining </title>
     <!-- Google Fonts for Luxury Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- AOS Library for Scroll Animations -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <a href="javascript:void(0)" class="nav-link" onclick="openVault()"><i class="fa-solid fa-lock"></i> The Vault</a>
     
-    <style>
+    <style>/* 1. Floating Soundtrack Controller */
+        .soundtrack-ctrl {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: rgba(11, 11, 10, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+            backdrop-filter: blur(8px);
+            color: #fff;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .soundtrack-ctrl:hover {
+            border-color: var(--accent-gold, #d4af37);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        /* 2. Palate Profiler Section Styling */
+        .profiler-section {
+            background-color: #0b0b0a;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .profiler-card {
+            max-width: 650px;
+            margin: 40px auto 0 auto;
+            background: #0d0d0c;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .profiler-step {
+            display: none;
+        }
+        .profiler-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .profiler-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+        .profiler-opt {
+            background: transparent;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .profiler-opt:hover, .profiler-opt.selected {
+            background: var(--accent-gold, #d4af37);
+            color: #000;
+            border-color: var(--accent-gold, #d4af37);
+        }
+        .profiler-btn {
+            background: transparent;
+            border: 1px solid var(--accent-gold, #d4af37);
+            color: var(--accent-gold, #d4af37);
+            padding: 10px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .profiler-btn:hover {
+            background: var(--accent-gold, #d4af37);
+            color: #000;
+        }
+
+        /* 3. The Vault (Secret Menu) Modal */
+        .vault-modal {
+            display: none;
+            position: fixed;
+            z-index: 2100;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+            align-items: center; justify-content: center;
+        }
+        .vault-content {
+            background: #090908;
+            border: 1px solid var(--accent-gold, #d4af37);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            padding: 40px;
+            text-align: center;
+            color: #fff;
+        }
+        .vault-input {
+            width: 100%;
+            padding: 12px;
+            background: #141412;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #fff;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            outline: none;
+        }
+        .vault-input:focus {
+            border-color: var(--accent-gold, #d4af37);
+        }
+
+        /* 4. Bespoke Dining Zone Buttons for Reservation Form */
+        .dining-zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .zone-card {
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            padding: 15px;
+            cursor: pointer;
+            text-align: center;
+            background: #141412;
+            transition: all 0.3s;
+        }
+        .zone-card h4 {
+            color: var(--accent-gold, #d4af37);
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .zone-card p {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin: 0;
+        }
+        .zone-card.selected {
+            border-color: var(--accent-gold, #d4af37);
+            background: rgba(212, 175, 55, 0.05);
+        }
         :root {
             --bg-color: #0b0b0a;
             --card-bg: #141412;
@@ -993,6 +1139,43 @@
     <!-- Menu Section with Filter Implementation -->
     <style>
         /* Gallery Grid & Card Styling */
+        <section id="palate-profiler" class="profiler-section">
+        <div class="section-title">
+            <p>Bespoke Pairing</p>
+            <h2>Palate <span>Profiler</span></h2>
+        </div>
+        
+        <div class="profiler-card">
+            <div id="step-1" class="profiler-step active">
+                <h3 style="color: #d4af37; font-family: 'Playfair Display';">Select Your Preferred Flavor Vibe</h3>
+                <div class="profiler-options">
+                    <button class="profiler-opt" onclick="selectProfile(1, 'Smoky & Bold')">Smoky & Bold</button>
+                    <button class="profiler-opt" onclick="selectProfile(1, 'Delicate & Herbaceous')">Delicate & Herbaceous</button>
+                    <button class="profiler-opt" onclick="selectProfile(1, 'Spicy & Rich')">Spicy & Rich</button>
+                </div>
+            </div>
+
+            <div id="step-2" class="profiler-step">
+                <h3 style="color: #d4af37; font-family: 'Playfair Display';">Choose Your Preferred Protein</h3>
+                <div class="profiler-options">
+                    <button class="profiler-opt" onclick="selectProfile(2, 'Seafood')">Exotic Seafood</button>
+                    <button class="profiler-opt" onclick="selectProfile(2, 'Beef')">Premium Cuts</button>
+                    <button class="profiler-opt" onclick="selectProfile(2, 'Vegetarian')">Gourmet Veggie</button>
+                </div>
+                <button class="profiler-btn" style="margin-top: 10px;" onclick="prevStep(1)">Back</button>
+            </div>
+
+            <div id="step-3" class="profiler-step">
+                <h3 style="color: #d4af37; font-family: 'Playfair Display';">Your Curated Tasting Menu</h3>
+                <div id="pairing-results" style="margin: 20px 0; font-size: 1.1rem; line-height: 1.6;">
+                    </div>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button class="profiler-btn" onclick="prevStep(2)">Reset</button>
+                    <button class="profiler-btn" style="background: #d4af37; color: #000;" onclick="addCuratedMenu()">Add Selection to Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
         .gallery-section {
             background-color: #0b0b0a;
             padding: 60px 0;
@@ -1473,7 +1656,84 @@ window.onclick = function(event) {
 
             const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/2348143832354?text=${encoded}`, '_blank');
-        }
+        } // 1. Secret Menu (The Vault)
+function openVault() {
+    document.getElementById('vault-modal').style.display = 'flex';
+}
+function closeVault() {
+    document.getElementById('vault-modal').style.display = 'none';
+}
+function unlockVault() {
+    const code = document.getElementById('vault-passphrase').value.trim().toLowerCase();
+    if (code === 'chefsvip' || code === 'gold') {
+        alert("✨ Welcome to The Vault! You've unlocked our 24K Gold-Dusted Truffle Egusi (Off-Menu). It has been temporarily added to your main ordering choices!");
+        closeVault();
+    } else {
+        alert("Incorrect secret passcode. Join our VIP newsletter to receive tonight's passkey.");
+    }
+}
+
+// 2. Palate Profiler Logic
+let userProfile = { step1: '', step2: '' };
+function selectProfile(step, value) {
+    if (step === 1) {
+        userProfile.step1 = value;
+        document.getElementById('step-1').classList.remove('active');
+        document.getElementById('step-2').classList.add('active');
+    } else if (step === 2) {
+        userProfile.step2 = value;
+        document.getElementById('step-2').classList.remove('active');
+        document.getElementById('step-3').classList.add('active');
+        displayCuratedPairing();
+    }
+}
+function prevStep(stepNum) {
+    document.getElementById('step-2').classList.remove('active');
+    document.getElementById('step-3').classList.remove('active');
+    document.getElementById('step-' + stepNum).classList.add('active');
+}
+function displayCuratedPairing() {
+    let dishName = "Royal Seafood Okra";
+    let pairingDesc = "Based on your taste for " + userProfile.step1 + " and " + userProfile.step2 + ", the culinary team recommends the **Royal Seafood Okra** paired with a cold smoked local hibiscus cocktail.";
+    
+    if (userProfile.step1 === 'Smoky & Bold' && userProfile.step2 === 'Beef') {
+        dishName = "Slow-Braised Short Rib Jollof";
+        pairingDesc = "We recommend our **Slow-Braised Short Rib Jollof** paired with dry-aged local red wine.";
+    } else if (userProfile.step1 === 'Delicate & Herbaceous') {
+        dishName = "Gilded Yam Balls";
+        pairingDesc = "Enjoy our crisp **Gilded Yam Balls** with wild microgreens and cold-infused sweet pepper tonic.";
+    }
+    
+    document.getElementById('pairing-results').innerHTML = pairingDesc;
+    document.getElementById('pairing-results').setAttribute('data-recommended-dish', dishName);
+}
+function addCuratedMenu() {
+    const recommendedDish = document.getElementById('pairing-results').getAttribute('data-recommended-dish');
+    alert("Added " + recommendedDish + " pairing to your reservation order!");
+}
+
+// 3. Floating Ambient Kitchen Soundtrack
+function toggleKitchenSound() {
+    const audio = document.getElementById('kitchen-audio');
+    const icon = document.getElementById('sound-icon');
+    const txt = document.getElementById('sound-txt');
+    if (audio.paused) {
+        audio.play().catch(e => console.log("Audio play blocked by browser. Click to retry."));
+        icon.className = "fa-solid fa-volume-high";
+        txt.textContent = "Kitchen Sound: ON";
+    } else {
+        audio.pause();
+        icon.className = "fa-solid fa-volume-mute";
+        txt.textContent = "Kitchen Sound: OFF";
+    }
+}
+
+// 4. Reservation Dining Zone Selection
+function selectZone(element, zoneName) {
+    document.querySelectorAll('.zone-card').forEach(card => card.classList.remove('selected'));
+    element.classList.add('selected');
+    document.getElementById('selected-zone').value = zoneName;
+}
     </script>
     <div id="terms-modal" class="terms-modal">
         <div class="terms-modal-content" data-aos="zoom-in">
@@ -1595,5 +1855,20 @@ window.onclick = function(event) {
             background-color: #fff;
         }
     </style><a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
+<div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
+        <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
+        <span id="sound-txt">Kitchen Ambience</span>
+        <audio id="kitchen-audio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    </div>
+
+    <div id="vault-modal" class="vault-modal">
+        <div class="vault-content">
+            <h2 style="font-family: 'Playfair Display', serif; color: #d4af37;">THE VAULT</h2>
+            <p style="font-size: 0.9rem; color: #ccc;">Enter the VIP passphrase to unlock tonight's exclusive off-menu delicacies.</p>
+            <input type="text" id="vault-passphrase" class="vault-input" placeholder="Enter VIP Passcode">
+            <button class="profiler-btn" onclick="unlockVault()">Unlock Culinary Secrets</button>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #666; cursor: pointer;" onclick="closeVault()">Close</p>
+        </div>
+    </div>
 </body>
 </html>
