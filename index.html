@@ -1282,7 +1282,22 @@
 
     <!-- JS Libraries and Custom Script Modules -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
+    <script>// Functions to control the Terms and Conditions Modal
+function openTerms() {
+    document.getElementById('terms-modal').style.display = 'flex';
+}
+
+function closeTerms() {
+    document.getElementById('terms-modal').style.display = 'none';
+}
+
+// Close modal if user clicks outside of the box
+window.onclick = function(event) {
+    let termsModal = document.getElementById('terms-modal');
+    if (event.target == termsModal) {
+        closeTerms();
+    }
+}
         // Initialize AOS Scroll Animations
         AOS.init({
             duration: 800,
@@ -1579,6 +1594,6 @@
         .terms-agree-btn:hover {
             background-color: #fff;
         }
-    </style>
+    </style><a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
 </body>
 </html>
