@@ -1460,5 +1460,125 @@
             window.open(`https://wa.me/2348143832354?text=${encoded}`, '_blank');
         }
     </script>
+    <div id="terms-modal" class="terms-modal">
+        <div class="terms-modal-content" data-aos="zoom-in">
+            <span class="close-terms-btn" onclick="closeTerms()">&times;</span>
+            <h2>Terms & <span>Conditions</span></h2>
+            <div class="terms-body">
+                <p>Welcome to our Curated Culinary Art platform. By accessing our site and placing reservations or orders, you agree to comply with the following terms:</p>
+                
+                <h3>1. Reservations & Dining</h3>
+                <p>To maintain our premium dining standards, table reservations are held for a maximum of 15 minutes past the scheduled time. Please contact us immediately if you are running late.</p>
+                
+                <h3>2. Orders & Payments</h3>
+                <p>All prices listed on our menu are in Nigerian Naira (₦). Payments must be completed securely via our integrated checkout options before delivery or order confirmation.</p>
+                
+                <h3>3. Cancellation Policy</h3>
+                <p>Cancellations for gourmet private dining or group reservations must be made at least 24 hours in advance. Late cancellations may incur a processing fee.</p>
+                
+                <h3>4. Dietary Requirements</h3>
+                <p>While we take extreme care to accommodate dietary preferences and allergies, guests are required to notify our staff of any severe allergies prior to ordering.</p>
+            </div>
+            <button class="terms-agree-btn" onclick="closeTerms()">I Accept</button>
+        </div>
+    </div>
+
+    <style>
+        /* Terms Modal Styling */
+        .terms-modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terms-modal-content {
+            background-color: #0d0d0c;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            color: #f4f4f0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .terms-modal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .terms-modal-content h2 span {
+            color: #d4af37; /* Accent Gold */
+        }
+
+        .close-terms-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-terms-btn:hover {
+            color: #d4af37;
+        }
+
+        .terms-body {
+            max-height: 350px;
+            overflow-y: auto;
+            text-align: left;
+            padding-right: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Customize scrollbar inside terms */
+        .terms-body::-webkit-scrollbar {
+            width: 5px;
+        }
+        .terms-body::-webkit-scrollbar-thumb {
+            background-color: #d4af37;
+            border-radius: 10px;
+        }
+
+        .terms-body h3 {
+            color: #d4af37;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .terms-agree-btn {
+            background-color: #d4af37;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .terms-agree-btn:hover {
+            background-color: #fff;
+        }
+    </style>
 </body>
 </html>
