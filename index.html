@@ -12,7 +12,8 @@
         .soundtrack-ctrl {
             position: fixed;
             bottom: 25px;
-            left: 25px;
+            right: 25px;
+            left: auto;
             background: rgba(11, 11, 10, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 50px;
@@ -24,7 +25,6 @@
             backdrop-filter: blur(8px);
             color: #fff;
             font-size: 0.85rem;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
         .soundtrack-ctrl:hover {
@@ -39,10 +39,11 @@
             pointer-events: none;
         }
         .audio-btn {
-            background: rgba(212, 175, 55, 0.15);
+            appearance: none;
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 50%;
             padding: 10px;
+            background: rgba(212, 175, 55, 0.15);
             color: #d4af37;
             display: inline-flex;
             align-items: center;
@@ -53,6 +54,10 @@
         .audio-btn:hover {
             background: rgba(212, 175, 55, 0.25);
             transform: scale(1.05);
+        }
+        .audio-btn.play-btn {
+            min-width: 44px;
+            min-height: 44px;
         }
 
         /* 2. Palate Profiler Section Styling */
@@ -1843,7 +1848,8 @@ function setKitchenAudioSource(sourceUrl) {
     }
 }
 
-function toggleKitchenSound() {
+function toggleKitchenSound(event) {
+    if (event) event.stopPropagation();
     const audio = document.getElementById('kitchen-audio');
     const icon = document.getElementById('sound-icon');
     const txt = document.getElementById('sound-txt');
@@ -2019,9 +2025,11 @@ function selectZone(element, zoneName) {
         }
     </style>
     <a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
-    <div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
-        <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
-        <span id="sound-txt">Tap to start the audio</span>
+    <div class="soundtrack-ctrl">
+        <button class="audio-btn play-btn" onclick="toggleKitchenSound(event)">
+            <i id="sound-icon" class="fa-solid fa-volume-mute"></i>
+        </button>
+        <span id="sound-txt">Tap play to start audio</span>
         <button class="audio-btn" onclick="nextKitchenTrack(event)"><i class="fa-solid fa-forward"></i></button>
         <audio id="kitchen-audio" preload="metadata" src="./audio/Monday_s_Hush.mp3"></audio>
     </div>
