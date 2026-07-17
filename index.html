@@ -1777,8 +1777,8 @@ function addCuratedMenu() {
 
 // 3. Floating Ambient Kitchen Soundtrack
 const kitchenPlaylist = [
-    'file:///mnt/c/Users/PC/Downloads/Audio/Monday_s_Hush.mp3',
-    'file:///mnt/c/Users/PC/Downloads/Audio/Seven_Course_Devotion.mp3'
+    './audio/Monday_s_Hush.mp3',
+    './audio/Seven_Course_Devotion.mp3'
 ];
 let kitchenTrackIndex = 0;
 let kitchenAudioInitialized = false;
@@ -1789,11 +1789,15 @@ function initializeKitchenAudio() {
 
     audio.loop = false;
     audio.volume = 0.7;
+    audio.playsInline = true;
+    audio.muted = false;
+
     audio.addEventListener('ended', () => {
         kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
         setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
         audio.play().catch(err => {
             console.log('Audio play blocked when advancing track:', err);
+            document.getElementById('sound-txt').textContent = 'Tap to resume audio';
         });
         document.getElementById('sound-txt').textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
     });
@@ -1970,7 +1974,7 @@ function selectZone(element, zoneName) {
     <div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
         <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
         <span id="sound-txt">Tap to start the audio</span>
-        <audio id="kitchen-audio" controls preload="metadata" src="file:///mnt/c/Users/PC/Downloads/Audio/Monday_s_Hush.mp3"></audio>
+        <audio id="kitchen-audio" controls preload="metadata" src="./audio/Monday_s_Hush.mp3"></audio>
     </div>
 
     <div id="vault-modal" class="vault-modal" style="display:none;">
