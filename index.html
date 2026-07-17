@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casi fla — Fine Dining </title>
+    <title>Casi fla — Fine Dining</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -1091,11 +1091,9 @@
         <div class="logo-container">
             <picture>
                 <source srcset="logo-optimized.webp" type="image/webp">
-                <img src="logo.png" alt="Casi fla Logo" class="logo-img">
-            </picture>
-            <div class="logo-text">Casi <span>fla</span></div>
-            
-            <div class="status-badge" id="statusBadge">
+                    <img src="logo.png" alt="Casi fla Logo" class="logo-img">
+                </picture>
+                <div class="logo-text">Casi <span>fla</span></div>
                 <span class="status-dot"></span>
                 <span id="statusText">Checking status...</span>
             </div>
@@ -1464,6 +1462,7 @@
                 <p>10b Itohan Avenue, off Isaac John, GRA, Ikeja, Lagos, Nigeria</p>
                 <p>Phone: 08143832354</p>
                 <p>Email: casijondoe@gmail.com</p>
+                <p>Website: <a href="https://www.casifla.com" target="_blank" rel="noopener noreferrer">www.casifla.com</a></p>
             </div>
             <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
                 <h4>Follow Our Journey</h4>
@@ -1504,6 +1503,9 @@ window.onclick = function(event) {
             once: true,
             offset: 100
         });
+
+        const SITE_DOMAIN = 'https://www.casifla.com';
+        const SITE_HOSTNAME = 'www.casifla.com';
 
         // 1. Live Operational Status Indicator Logic
         function updateOperationalStatus() {
@@ -1675,7 +1677,7 @@ window.onclick = function(event) {
                 return;
             }
 
-            let message = `*NEW ORDER - CASI FLA*\n`;
+            let message = `*NEW ORDER - ${SITE_HOSTNAME.toUpperCase()}*\n`;
             message += `-------------------------\n`;
             message += `*Location:* 10b Itohan Avenue, GRA Ikeja\n`;
             message += `*Table:* ${table}\n\n`;
@@ -1730,7 +1732,7 @@ function unlockVault() {
         alert('Access Denied: Incorrect VIP Passcode.');
     }
 
-    const currentSiteUrl = window.location.href;
+    const currentSiteUrl = SITE_DOMAIN;
     const barcodeImg = document.getElementById('vaultBarcode');
     const barcodeLink = document.getElementById('vaultBarcodeLink');
     if (barcodeImg) {
