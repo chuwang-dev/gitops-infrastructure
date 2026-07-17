@@ -31,6 +31,29 @@
             border-color: var(--accent-gold, #d4af37);
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
+        .soundtrack-ctrl audio {
+            display: none;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+        .audio-btn {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            padding: 10px;
+            color: #d4af37;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+        .audio-btn:hover {
+            background: rgba(212, 175, 55, 0.25);
+            transform: scale(1.05);
+        }
 
         /* 2. Palate Profiler Section Styling */
         .profiler-section {
@@ -1831,16 +1854,39 @@ function toggleKitchenSound() {
     if (audio.paused) {
         audio.play().then(() => {
             icon.className = 'fa-solid fa-volume-high';
-            txt.textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
+            txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
         }).catch(e => {
             console.log('Audio play blocked by browser. Please click again to start the music.', e);
-            alert('The browser blocked playback. Use the audio controls or click again to start the music.');
+            txt.textContent = 'Tap again to start audio';
         });
     } else {
         audio.pause();
         icon.className = 'fa-solid fa-volume-mute';
         txt.textContent = 'Kitchen Sound: OFF';
     }
+}
+
+function nextKitchenTrack(event) {
+    event.stopPropagation();
+    kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
+    setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
+    const audio = document.getElementById('kitchen-audio');
+    const txt = document.getElementById('sound-txt');
+    const icon = document.getElementById('sound-icon');
+    audio.play().then(() => {
+        icon.className = 'fa-solid fa-volume-high';
+        txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
+    }).catch(() => {
+        txt.textContent = 'Tap to resume audio';
+    });
+}
+
+function getKitchenTrackLabel(index) {
+    const labels = [
+        'Monday\'s Hush',
+        'Seven Course Devotion'
+    ];
+    return labels[index] || 'Kitchen Track';
 }
 
 // 4. Reservation Dining Zone Selection
@@ -1974,7 +2020,8 @@ function selectZone(element, zoneName) {
     <div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
         <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
         <span id="sound-txt">Tap to start the audio</span>
-        <audio id="kitchen-audio" controls preload="metadata" src="./audio/Monday_s_Hush.mp3"></audio>
+        <button class="audio-btn" onclick="nextKitchenTrack(event)"><i class="fa-solid fa-forward"></i></button>
+        <audio id="kitchen-audio" preload="metadata" src="./audio/Monday_s_Hush.mp3"></audio>
     </div>
 
     <div id="vault-modal" class="vault-modal" style="display:none;">
