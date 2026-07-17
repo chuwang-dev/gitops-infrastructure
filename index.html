@@ -1099,7 +1099,7 @@
                     <img src="logo.png" alt="Casi fla Logo" class="logo-img">
                 </picture>
                 <div class="logo-text">Casi <span>fla</span></div>
-                <span class="status-dot"></span>
+                <span id="statusBadge" class="status-badge"><span class="status-dot"></span></span>
                 <span id="statusText">Checking status...</span>
             </div>
         </div>
@@ -1503,12 +1503,20 @@ window.onclick = function(event) {
     }
 }
         // Initialize AOS Scroll Animations
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-quad',
-            once: true,
-            offset: 100
-        });
+        try {
+            if (window.AOS && typeof AOS.init === 'function') {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-out-quad',
+                    once: true,
+                    offset: 100
+                });
+            } else {
+                console.warn('AOS is unavailable; skipping scroll animations.');
+            }
+        } catch (error) {
+            console.warn('AOS init failed:', error);
+        }
 
         const SITE_DOMAIN = 'https://www.casifla.com';
         const SITE_HOSTNAME = 'www.casifla.com';
@@ -1532,11 +1540,11 @@ window.onclick = function(event) {
             const openingHour = 12;
 
             if (hours >= openingHour && hours < closingHour) {
-                badge.className = 'status-badge status-open';
-                text.innerHTML = `Open Now &bull; Closing at ${closingHour === 23 ? '11:00 PM' : '10:00 PM'}`;
+                if (badge) badge.className = 'status-badge status-open';
+                if (text) text.innerHTML = `Open Now &bull; Closing at ${closingHour === 23 ? '11:00 PM' : '10:00 PM'}`;
             } else {
-                badge.className = 'status-badge status-closed';
-                text.innerHTML = `Closed &bull; Opens at 12:00 PM`;
+                if (badge) badge.className = 'status-badge status-closed';
+                if (text) text.innerHTML = `Closed &bull; Opens at 12:00 PM`;
             }
         }
         
