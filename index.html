@@ -1084,7 +1084,6 @@
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#order">How to Order</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="javascript:void(0)" class="nav-link" onclick="openVault()"><i class="fa-solid fa-lock"></i> The Vault</a></li>
                 <li>
                     <div class="header-actions">
                         <button class="cart-btn-header" onclick="toggleCart(true)">
@@ -1781,6 +1780,7 @@ const kitchenPlaylist = [
     'https://share.gemini.google/kjSxTFlhDRra',
     'https://share.gemini.google/RRI1yH97BOB2'
 ];
+const kitchenFallbackTrack = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 let kitchenTrackIndex = 0;
 let kitchenAudioInitialized = false;
 
@@ -1792,13 +1792,38 @@ function initializeKitchenAudio() {
     audio.volume = 0.7;
     audio.addEventListener('ended', () => {
         kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
-        audio.src = kitchenPlaylist[kitchenTrackIndex];
-        audio.load();
-        audio.play().catch(e => console.log('Audio play blocked by browser when advancing playlist.'));
+        setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
+        audio.play().catch(err => {
+            console.log('Audio play blocked or failed when advancing playlist:', err);
+            audio.src = kitchenFallbackTrack;
+            audio.load();
+        });
         document.getElementById('sound-txt').textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
     });
 
+    audio.addEventListener('error', () => {
+        console.log('Kitchen audio failed to load. Falling back to a playable track.');
+        if (!audio.dataset.fallback) {
+            audio.dataset.fallback = '1';
+            audio.src = kitchenFallbackTrack;
+            audio.load();
+            audio.play().catch(() => {
+                document.getElementById('sound-txt').textContent = 'Audio unavailable';
+            });
+        } else {
+            document.getElementById('sound-txt').textContent = 'Audio unavailable';
+        }
+    });
+
     kitchenAudioInitialized = true;
+}
+
+function setKitchenAudioSource(sourceUrl) {
+    const audio = document.getElementById('kitchen-audio');
+    if (audio) {
+        audio.src = sourceUrl;
+        audio.load();
+    }
 }
 
 function toggleKitchenSound() {
@@ -1808,7 +1833,7 @@ function toggleKitchenSound() {
     initializeKitchenAudio();
 
     if (!audio.src) {
-        audio.src = kitchenPlaylist[kitchenTrackIndex];
+        setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
     }
 
     if (audio.paused) {
@@ -1816,8 +1841,8 @@ function toggleKitchenSound() {
             icon.className = 'fa-solid fa-volume-high';
             txt.textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
         }).catch(e => {
-            console.log('Audio play blocked by browser. Please click again to start the jazz.');
-            alert('Your browser blocked play. Click the music control again to start the audio.');
+            console.log('Audio play blocked by browser. Please click again to start the jazz.', e);
+            alert('The browser blocked playback. Use the audio controls or click again to start the music.');
         });
     } else {
         audio.pause();
@@ -1952,11 +1977,15 @@ function selectZone(element, zoneName) {
         .terms-agree-btn:hover {
             background-color: #fff;
         }
-    </style><a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
-<div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
+    </style>
+    <a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
+    <div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
         <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
         <span id="sound-txt">Tap to start the jazz</span>
-        <audio id="kitchen-audio" preload="metadata"></audio>
+        <audio id="kitchen-audio" controls preload="metadata"></audio>
+    </div>
+
+    <div id="vault-modal" class="vault-modal" style="display:none;">
         <div class="vault-content">
             <h2 style="font-family: 'Playfair Display', serif; color: #d4af37;">THE VAULT</h2>
             <p style="font-size: 0.9rem; color: #ccc;">Enter the VIP passphrase to unlock tonight's exclusive off-menu delicacies.</p>
