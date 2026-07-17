@@ -1485,7 +1485,29 @@
 
     <!-- JS Libraries and Custom Script Modules -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>// Functions to control the Terms and Conditions Modal
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const playBtn = document.getElementById('soundtrackPlayBtn');
+            const nextBtn = document.getElementById('soundtrackNextBtn');
+
+            if (playBtn) {
+                playBtn.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    toggleKitchenSound();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    nextKitchenTrack(event);
+                });
+            }
+        });
+
+        // Functions to control the Terms and Conditions Modal
 function openTerms() {
     document.getElementById('terms-modal').style.display = 'flex';
 }
@@ -1821,6 +1843,11 @@ function initializeKitchenAudio() {
     audio.volume = 0.7;
     audio.playsInline = true;
     audio.muted = false;
+    audio.preload = 'auto';
+
+    if (!audio.src) {
+        setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
+    }
 
     audio.addEventListener('ended', () => {
         kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
@@ -1837,6 +1864,10 @@ function initializeKitchenAudio() {
         document.getElementById('sound-txt').textContent = 'Audio unavailable';
     });
 
+    audio.addEventListener('canplay', () => {
+        console.log('Kitchen audio can play.');
+    });
+
     kitchenAudioInitialized = true;
 }
 
@@ -1848,12 +1879,15 @@ function setKitchenAudioSource(sourceUrl) {
     }
 }
 
-function toggleKitchenSound(event) {
-    if (event) event.stopPropagation();
+let userInitiatedAudio = false;
+
+function toggleKitchenSound() {
     const audio = document.getElementById('kitchen-audio');
     const icon = document.getElementById('sound-icon');
     const txt = document.getElementById('sound-txt');
     initializeKitchenAudio();
+
+    userInitiatedAudio = true;
 
     if (!audio.src) {
         setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
@@ -1861,11 +1895,20 @@ function toggleKitchenSound(event) {
 
     if (audio.paused) {
         audio.play().then(() => {
+            audio.muted = false;
             icon.className = 'fa-solid fa-volume-high';
             txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
         }).catch(e => {
-            console.log('Audio play blocked by browser. Please click again to start the music.', e);
-            txt.textContent = 'Tap again to start audio';
+            console.log('Audio play blocked by browser on first attempt:', e);
+            txt.textContent = 'Retrying muted playback...';
+            audio.muted = true;
+            audio.play().then(() => {
+                icon.className = 'fa-solid fa-volume-high';
+                txt.textContent = `Playing muted: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
+            }).catch(err => {
+                console.log('Muted playback also blocked:', err);
+                txt.textContent = 'Tap again to start audio';
+            });
         });
     } else {
         audio.pause();
@@ -1876,17 +1919,23 @@ function toggleKitchenSound(event) {
 
 function nextKitchenTrack(event) {
     event.stopPropagation();
-    kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
-    setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
     const audio = document.getElementById('kitchen-audio');
     const txt = document.getElementById('sound-txt');
     const icon = document.getElementById('sound-icon');
-    audio.play().then(() => {
-        icon.className = 'fa-solid fa-volume-high';
-        txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
-    }).catch(() => {
-        txt.textContent = 'Tap to resume audio';
-    });
+
+    kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
+    setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
+    if (userInitiatedAudio) {
+        audio.play().then(() => {
+            audio.muted = false;
+            icon.className = 'fa-solid fa-volume-high';
+            txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
+        }).catch(() => {
+            txt.textContent = 'Tap to resume audio';
+        });
+    } else {
+        txt.textContent = `Ready: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
+    }
 }
 
 function getKitchenTrackLabel(index) {
@@ -2025,12 +2074,12 @@ function selectZone(element, zoneName) {
         }
     </style>
     <a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
-    <div class="soundtrack-ctrl">
-        <button class="audio-btn play-btn" onclick="toggleKitchenSound(event)">
+    <div class="soundtrack-ctrl" id="soundtrackControl">
+        <button class="audio-btn play-btn" id="soundtrackPlayBtn">
             <i id="sound-icon" class="fa-solid fa-volume-mute"></i>
         </button>
         <span id="sound-txt">Tap play to start audio</span>
-        <button class="audio-btn" onclick="nextKitchenTrack(event)"><i class="fa-solid fa-forward"></i></button>
+        <button class="audio-btn" id="soundtrackNextBtn"><i class="fa-solid fa-forward"></i></button>
         <audio id="kitchen-audio" preload="metadata" src="./audio/Monday_s_Hush.mp3"></audio>
     </div>
 
