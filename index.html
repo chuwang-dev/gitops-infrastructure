@@ -1288,22 +1288,22 @@
         
         <div class="food-gallery-grid" data-aos="fade-up" data-aos-delay="200">
             <div class="gallery-card">
-                <img src="egusi.webp" alt="Tantalizing Egusi Soup" loading="lazy">
+                <img src="images/egusi-soup.jpg" alt="Tantalizing Egusi Soup" loading="lazy">
                 <div class="gallery-overlay-text">Tantalizing Egusi Soup</div>
             </div>
             
             <div class="gallery-card">
-                <img src="okra.webp" alt="Tasty Okra Soup" loading="lazy">
+                <img src="images/okra-soup.jpg" alt="Tasty Okra Soup" loading="lazy">
                 <div class="gallery-overlay-text">Tasty Okra Soup</div>
             </div>
             
             <div class="gallery-card">
-                <img src="stew.webp" alt="Gourmet Tomato Stew" loading="lazy">
+                <img src="images/gourmet-tomato-stew.jpg" alt="Gourmet Tomato Stew" loading="lazy">
                 <div class="gallery-overlay-text">Gourmet Tomato Stew</div>
             </div>
             
             <div class="gallery-card">
-                <img src="ogbono.webp" alt="Classic Ogbono Soup" loading="lazy">
+                <img src="images/ogbono-soup.jpg" alt="Classic Ogbono Soup" loading="lazy">
                 <div class="gallery-overlay-text">Classic Ogbono Soup</div>
             </div>
         </div>
@@ -1706,6 +1706,16 @@ function unlockVault() {
     } else {
         alert('Access Denied: Incorrect VIP Passcode.');
     }
+
+    const currentSiteUrl = window.location.href;
+    const barcodeImg = document.getElementById('vaultBarcode');
+    const barcodeLink = document.getElementById('vaultBarcodeLink');
+    if (barcodeImg) {
+        barcodeImg.src = `https://barcode.tec-it.com/barcode.ashx?data=${encodeURIComponent(currentSiteUrl)}&code=Code128&translate-esc=off`;
+    }
+    if (barcodeLink) {
+        barcodeLink.href = currentSiteUrl;
+    }
 }
 
 // 2. Palate Profiler Logic
@@ -1892,8 +1902,8 @@ function selectZone(element, zoneName) {
     </style><a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
 <div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
         <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
-        <span id="sound-txt">Kitchen Ambience</span>
-        <audio id="kitchen-audio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+        <span id="sound-txt">Soft Jazz Ambience</span>
+        <audio id="kitchen-audio" loop src="https://www.mfiles.co.uk/mp3-downloads/jazz-04.mp3"></audio>
     </div>
 
     <div id="vault-modal" class="vault-modal">
@@ -1904,6 +1914,11 @@ function selectZone(element, zoneName) {
             <div id="vaultSecret" class="vault-reveal" style="display: none; margin-top: 20px; padding: 15px; border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 8px; background: rgba(212, 175, 55, 0.08); color: #fff;">
                 <h4 style="color: var(--accent-gold); margin-bottom: 10px;">✨ VIP Access Granted!</h4>
                 <p>Welcome to the inner circle. Your private code is: <strong>LAGOS-VIP-2026</strong></p>
+                <div class="barcode-container" style="margin-top: 20px; text-align: center;">
+                    <a id="vaultBarcodeLink" href="#" target="_blank" rel="noopener noreferrer">
+                        <img id="vaultBarcode" src="https://barcode.tec-it.com/barcode.ashx?data=LAGOS-VIP-2026&code=Code128&translate-esc=off" alt="VIP Barcode" style="max-width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.12); padding: 12px; background: #010101; border-radius: 6px;" />
+                    </a>
+                </div>
                 <p style="margin-top: 10px; color: #ccc;">Share this code with our host to access VIP seating and off-menu curation.</p>
             </div>
             <p style="margin-top: 15px; font-size: 0.8rem; color: #666; cursor: pointer;" onclick="closeVault()">Close</p>
