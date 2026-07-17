@@ -1737,24 +1737,42 @@ function prevStep(stepNum) {
     document.getElementById('step-3').classList.remove('active');
     document.getElementById('step-' + stepNum).classList.add('active');
 }
+const curatedMenuPrices = {
+    'Royal Seafood Okra': 35000,
+    'Slow-Braised Short Rib Jollof': 32000,
+    'Gilded Yam Balls': 10000
+};
+
 function displayCuratedPairing() {
     let dishName = "Royal Seafood Okra";
-    let pairingDesc = "Based on your taste for " + userProfile.step1 + " and " + userProfile.step2 + ", the culinary team recommends the **Royal Seafood Okra** paired with a cold smoked local hibiscus cocktail.";
+    let pairingDesc = "Based on your taste for " + userProfile.step1 + " and " + userProfile.step2 + ", the culinary team recommends the <strong>Royal Seafood Okra</strong> paired with a cold smoked local hibiscus cocktail.";
     
     if (userProfile.step1 === 'Smoky & Bold' && userProfile.step2 === 'Beef') {
         dishName = "Slow-Braised Short Rib Jollof";
-        pairingDesc = "We recommend our **Slow-Braised Short Rib Jollof** paired with dry-aged local red wine.";
+        pairingDesc = "We recommend our <strong>Slow-Braised Short Rib Jollof</strong> paired with dry-aged local red wine.";
     } else if (userProfile.step1 === 'Delicate & Herbaceous') {
         dishName = "Gilded Yam Balls";
-        pairingDesc = "Enjoy our crisp **Gilded Yam Balls** with wild microgreens and cold-infused sweet pepper tonic.";
+        pairingDesc = "Enjoy our crisp <strong>Gilded Yam Balls</strong> with wild microgreens and cold-infused sweet pepper tonic.";
     }
     
-    document.getElementById('pairing-results').innerHTML = pairingDesc;
-    document.getElementById('pairing-results').setAttribute('data-recommended-dish', dishName);
+    const pairingElement = document.getElementById('pairing-results');
+    pairingElement.innerHTML = pairingDesc;
+    pairingElement.setAttribute('data-recommended-dish', dishName);
+    pairingElement.setAttribute('data-recommended-price', curatedMenuPrices[dishName] || 0);
 }
 function addCuratedMenu() {
-    const recommendedDish = document.getElementById('pairing-results').getAttribute('data-recommended-dish');
-    alert("Added " + recommendedDish + " pairing to your reservation order!");
+    const pairingElement = document.getElementById('pairing-results');
+    const recommendedDish = pairingElement.getAttribute('data-recommended-dish');
+    const price = Number(pairingElement.getAttribute('data-recommended-price')) || 0;
+
+    if (!recommendedDish || price === 0) {
+        alert('Please complete your palate profile selection first so we can recommend the right dish.');
+        return;
+    }
+
+    addToCart(recommendedDish, price);
+    alert(`Added ${recommendedDish} to your order slip.`);
+    toggleCart(true);
 }
 
 // 3. Floating Ambient Kitchen Soundtrack
@@ -1762,16 +1780,15 @@ function toggleKitchenSound() {
     const audio = document.getElementById('kitchen-audio');
     const icon = document.getElementById('sound-icon');
     const txt = document.getElementById('sound-txt');
+    audio.muted = false;
     if (audio.paused) {
-        audio.play().catch(e => console.log("Audio play blocked by browser. Click to retry."));
-        icon.className = "fa-solid fa-volume-high";
-        txt.textContent = "Kitchen Sound: ON";
-    } else {
-        audio.pause();
-        icon.className = "fa-solid fa-volume-mute";
-        txt.textContent = "Kitchen Sound: OFF";
-    }
-}
+                audio.play().then(() => {
+                    icon.className = 'fa-solid fa-volume-high';
+                    txt.textContent = 'Kitchen Sound: ON';
+                }).catch(e => {
+                    console.log('Audio play blocked by browser. Please click again to start the jazz.');
+                    alert('Your browser blocked auto-play. Please click the jazz control again to start the music.');
+                });
 
 // 4. Reservation Dining Zone Selection
 function selectZone(element, zoneName) {
