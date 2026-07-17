@@ -1486,27 +1486,6 @@
     <!-- JS Libraries and Custom Script Modules -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const playBtn = document.getElementById('soundtrackPlayBtn');
-            const nextBtn = document.getElementById('soundtrackNextBtn');
-
-            if (playBtn) {
-                playBtn.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    toggleKitchenSound();
-                });
-            }
-
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    nextKitchenTrack(event);
-                });
-            }
-        });
-
         // Functions to control the Terms and Conditions Modal
 function openTerms() {
     document.getElementById('terms-modal').style.display = 'flex';
@@ -1829,8 +1808,8 @@ function addCuratedMenu() {
 
 // 3. Floating Ambient Kitchen Soundtrack
 const kitchenPlaylist = [
-    './audio/Monday_s_Hush.mp3',
-    './audio/Seven_Course_Devotion.mp3'
+    'audio/Monday_s_Hush.mp3',
+    'audio/Seven_Course_Devotion.mp3'
 ];
 let kitchenTrackIndex = 0;
 let kitchenAudioInitialized = false;
@@ -1845,10 +1824,6 @@ function initializeKitchenAudio() {
     audio.muted = false;
     audio.preload = 'auto';
 
-    if (!audio.src) {
-        setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
-    }
-
     audio.addEventListener('ended', () => {
         kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
         setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
@@ -1859,13 +1834,20 @@ function initializeKitchenAudio() {
         document.getElementById('sound-txt').textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
     });
 
-    audio.addEventListener('error', () => {
-        console.log('Kitchen audio failed to load from local file.');
+    audio.addEventListener('error', (event) => {
+        console.log('Kitchen audio failed to load from local file.', event);
         document.getElementById('sound-txt').textContent = 'Audio unavailable';
     });
 
     audio.addEventListener('canplay', () => {
         console.log('Kitchen audio can play.');
+    });
+
+    audio.addEventListener('playing', () => {
+        console.log('Kitchen audio started playing. muted=', audio.muted);
+        if (audio.muted) {
+            audio.muted = false;
+        }
     });
 
     kitchenAudioInitialized = true;
@@ -1874,7 +1856,7 @@ function initializeKitchenAudio() {
 function setKitchenAudioSource(sourceUrl) {
     const audio = document.getElementById('kitchen-audio');
     if (audio) {
-        audio.src = sourceUrl;
+        audio.src = new URL(sourceUrl, window.location.href).href;
         audio.load();
     }
 }
@@ -1889,13 +1871,14 @@ function toggleKitchenSound() {
 
     userInitiatedAudio = true;
 
-    if (!audio.src) {
+    if (!audio.currentSrc) {
         setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
     }
 
     if (audio.paused) {
+        audio.muted = false;
+        audio.currentTime = 0;
         audio.play().then(() => {
-            audio.muted = false;
             icon.className = 'fa-solid fa-volume-high';
             txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
         }).catch(e => {
@@ -1918,7 +1901,7 @@ function toggleKitchenSound() {
 }
 
 function nextKitchenTrack(event) {
-    event.stopPropagation();
+    if (event) event.stopPropagation();
     const audio = document.getElementById('kitchen-audio');
     const txt = document.getElementById('sound-txt');
     const icon = document.getElementById('sound-icon');
@@ -1926,8 +1909,8 @@ function nextKitchenTrack(event) {
     kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
     setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
     if (userInitiatedAudio) {
+        audio.muted = false;
         audio.play().then(() => {
-            audio.muted = false;
             icon.className = 'fa-solid fa-volume-high';
             txt.textContent = `Playing: ${getKitchenTrackLabel(kitchenTrackIndex)}`;
         }).catch(() => {
@@ -2075,12 +2058,12 @@ function selectZone(element, zoneName) {
     </style>
     <a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
     <div class="soundtrack-ctrl" id="soundtrackControl">
-        <button class="audio-btn play-btn" id="soundtrackPlayBtn">
+        <button type="button" class="audio-btn play-btn" id="soundtrackPlayBtn" onclick="toggleKitchenSound()">
             <i id="sound-icon" class="fa-solid fa-volume-mute"></i>
         </button>
         <span id="sound-txt">Tap play to start audio</span>
-        <button class="audio-btn" id="soundtrackNextBtn"><i class="fa-solid fa-forward"></i></button>
-        <audio id="kitchen-audio" preload="metadata" src="./audio/Monday_s_Hush.mp3"></audio>
+        <button type="button" class="audio-btn" id="soundtrackNextBtn" onclick="nextKitchenTrack(event)"><i class="fa-solid fa-forward"></i></button>
+        <audio id="kitchen-audio" preload="metadata"></audio>
     </div>
 
     <div id="vault-modal" class="vault-modal" style="display:none;">
