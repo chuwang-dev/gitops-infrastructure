@@ -1777,10 +1777,9 @@ function addCuratedMenu() {
 
 // 3. Floating Ambient Kitchen Soundtrack
 const kitchenPlaylist = [
-    'https://share.gemini.google/kjSxTFlhDRra',
-    'https://share.gemini.google/RRI1yH97BOB2'
+    'file:///mnt/c/Users/PC/Downloads/Audio/Monday_s_Hush.mp3',
+    'file:///mnt/c/Users/PC/Downloads/Audio/Seven_Course_Devotion.mp3'
 ];
-const kitchenFallbackTrack = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 let kitchenTrackIndex = 0;
 let kitchenAudioInitialized = false;
 
@@ -1794,25 +1793,14 @@ function initializeKitchenAudio() {
         kitchenTrackIndex = (kitchenTrackIndex + 1) % kitchenPlaylist.length;
         setKitchenAudioSource(kitchenPlaylist[kitchenTrackIndex]);
         audio.play().catch(err => {
-            console.log('Audio play blocked or failed when advancing playlist:', err);
-            audio.src = kitchenFallbackTrack;
-            audio.load();
+            console.log('Audio play blocked when advancing track:', err);
         });
         document.getElementById('sound-txt').textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
     });
 
     audio.addEventListener('error', () => {
-        console.log('Kitchen audio failed to load. Falling back to a playable track.');
-        if (!audio.dataset.fallback) {
-            audio.dataset.fallback = '1';
-            audio.src = kitchenFallbackTrack;
-            audio.load();
-            audio.play().catch(() => {
-                document.getElementById('sound-txt').textContent = 'Audio unavailable';
-            });
-        } else {
-            document.getElementById('sound-txt').textContent = 'Audio unavailable';
-        }
+        console.log('Kitchen audio failed to load from local file.');
+        document.getElementById('sound-txt').textContent = 'Audio unavailable';
     });
 
     kitchenAudioInitialized = true;
@@ -1841,7 +1829,7 @@ function toggleKitchenSound() {
             icon.className = 'fa-solid fa-volume-high';
             txt.textContent = `Kitchen Sound: ON (${kitchenTrackIndex + 1}/${kitchenPlaylist.length})`;
         }).catch(e => {
-            console.log('Audio play blocked by browser. Please click again to start the jazz.', e);
+            console.log('Audio play blocked by browser. Please click again to start the music.', e);
             alert('The browser blocked playback. Use the audio controls or click again to start the music.');
         });
     } else {
@@ -1981,8 +1969,8 @@ function selectZone(element, zoneName) {
     <a href="javascript:void(0)" onclick="openTerms()">Terms & Conditions</a>
     <div class="soundtrack-ctrl" onclick="toggleKitchenSound()">
         <i id="sound-icon" class="fa-solid fa-volume-mute" style="color: #d4af37;"></i>
-        <span id="sound-txt">Tap to start the jazz</span>
-        <audio id="kitchen-audio" controls preload="metadata"></audio>
+        <span id="sound-txt">Tap to start the audio</span>
+        <audio id="kitchen-audio" controls preload="metadata" src="file:///mnt/c/Users/PC/Downloads/Audio/Monday_s_Hush.mp3"></audio>
     </div>
 
     <div id="vault-modal" class="vault-modal" style="display:none;">
