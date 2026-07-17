@@ -1782,13 +1782,19 @@ function toggleKitchenSound() {
     const txt = document.getElementById('sound-txt');
     audio.muted = false;
     if (audio.paused) {
-                audio.play().then(() => {
-                    icon.className = 'fa-solid fa-volume-high';
-                    txt.textContent = 'Kitchen Sound: ON';
-                }).catch(e => {
-                    console.log('Audio play blocked by browser. Please click again to start the jazz.');
-                    alert('Your browser blocked auto-play. Please click the jazz control again to start the music.');
-                });
+        audio.play().then(() => {
+            icon.className = 'fa-solid fa-volume-high';
+            txt.textContent = 'Kitchen Sound: ON';
+        }).catch(e => {
+            console.log('Audio play blocked by browser. Please click again to start the jazz.');
+            alert('Your browser blocked auto-play. Please click the jazz control again to start the music.');
+        });
+    } else {
+        audio.pause();
+        icon.className = 'fa-solid fa-volume-mute';
+        txt.textContent = 'Kitchen Sound: OFF';
+    }
+}
 
 // 4. Reservation Dining Zone Selection
 function selectZone(element, zoneName) {
